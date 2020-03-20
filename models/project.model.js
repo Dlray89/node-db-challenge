@@ -1,12 +1,13 @@
 const project = require("../data/db.config")
-
+const mappers = require("./mappers")
 
 module.exports ={
     find,
     findById,
     add,
     update,
-    remove
+    remove,
+    getprojectfromtasks,
 }
 
 function find(){
@@ -35,4 +36,10 @@ function remove(id){
     return project("projects")
     .where({ id })
     .del()
+}
+
+function getprojectfromtasks(project_id){
+return project("task")
+.where("project_id", project_id)
+.then(tasks => tasks.map(task => mappers.actionToBody(task)))
 }
