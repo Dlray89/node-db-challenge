@@ -34,8 +34,8 @@ router.post("/", (req,res) => {
     const addProjects = req.body
     projectDB
     .add(addProjects)
-    .then(addProjects => {
-        res.status(201).json(addProjects)
+    .then(projects => {
+        res.status(200).json(projects)
     })
     .catch(error => {
         res.status(500).json({errorMessage: `${error} Couldn't find what you're looking for`})
@@ -44,9 +44,9 @@ router.post("/", (req,res) => {
 
 router.put("/:id", (req,res) => {
     const { id } = req.params
-    const updateProject = req.body
+    const changes = req.body
     projectDB
-    .update(id, updateProject)
+    .update(changes, "id")
     .then(updateProject => {
         res.status(201).json(updateProject)
     })
@@ -70,9 +70,9 @@ router.delete("/:id", (req,res) => {
 
 
 router.get("/:id/tasks", (req,res) => {
-    const { project_id } = req.params
+    const { id } = req.params
     projectDB
-    .getprojectfromtasks(project_id)
+    .getProjectTasks(id)
     .then(tasks => {
         res.status(200).json(tasks)
     })

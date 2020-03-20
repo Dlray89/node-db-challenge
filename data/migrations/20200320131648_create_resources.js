@@ -12,7 +12,7 @@ exports.up = function(knex) {
       .onDelete("CASCADE")
       .onUpdate("CASCADE")
 
-      resources.string("name", 128)
+      resources.string("name", 128).notNullable()
       resources.text("description", 300).notNullable
   })
 };

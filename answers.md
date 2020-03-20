@@ -1,6 +1,6 @@
-Relational Database:This is database in which data can be accessed and/or reassembled in different ways without you have to restructure the database table that has already been builded
+Relational Database:This is database in which data can be accessed and/or reassembled in different ways without you having to restructure the database table that has already been builded
 
-SQL Database:
+SQL Database: is a query database where you can look up different data.
 
 
 Why do tables need a primary key?
