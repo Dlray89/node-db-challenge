@@ -67,10 +67,12 @@ router.delete("/:id", (req,res) => {
     })
 })
 
-router("/:id/tasks", (req,res) => {
-    const { id } = req.params
+
+
+router.get("/:id/tasks", (req,res) => {
+    const { project_id } = req.params
     projectDB
-    .getprojectfromtasks(id)
+    .getprojectfromtasks(project_id)
     .then(tasks => {
         res.status(200).json(tasks)
     })
@@ -78,6 +80,17 @@ router("/:id/tasks", (req,res) => {
         res.status(500).json({errorMessage:`${error} Couldn't find what you're looking for`})
     })
 })
+
+// router.get("projects/tasks", (req,res) => {
+//     projectDB
+//     .getAllTasks()
+//     .then(task => {
+//         res.status(200).json(task)
+//     })
+//     .catch(error => {
+//         res.status(500).json({errorMessage:`${error} Couldn't find what you're looking for`})
+//     })
+// })
 
 
 module.exports = router

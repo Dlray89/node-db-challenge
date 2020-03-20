@@ -8,6 +8,7 @@ module.exports ={
     update,
     remove,
     getprojectfromtasks,
+    // getAllTasks,
 }
 
 function find(){
@@ -39,7 +40,15 @@ function remove(id){
 }
 
 function getprojectfromtasks(project_id){
-return project("task")
+return project("tasks")
 .where("project_id", project_id)
 .then(tasks => tasks.map(task => mappers.actionToBody(task)))
 }
+
+// function getAllTasks(){
+//     return project("tasks")
+//     .where()
+//     .then(tasks => tasks.map(task => mappers.actionToBody(task) ))
+    
+  
+// }

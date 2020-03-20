@@ -29,9 +29,9 @@ if(project.tasks) {
 return result
 }
 
-function actionToBody(action) {
+function actionToBody(tasks) {
     return {
-        ...action,
+        ...tasks,
         completed: intToBoolean(task.completed),
     }
 }
