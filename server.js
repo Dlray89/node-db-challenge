@@ -6,7 +6,7 @@ const helmet = require("helmet")
 
 
 //import routers here
-// const projectRouter = require("./router/projectRouter")
+const projectRouter = require("./router/projectRouter")
 // const taskRouter = require("./router/taskRouter")
 // const resourceRouter = require("./router/resourceRouter")
 
@@ -17,7 +17,7 @@ const server = express()
 server.use(helmet())
 server.use(morgan("dev"))
 server.use(express.json())
-// server.use("/api/projects", projectRouter)
+server.use("/api/projects", projectRouter)
 // server.use("/api/tasks", taskRouter)
 // server.use("/api/resources", resourceRouter)
 
