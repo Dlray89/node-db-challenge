@@ -17,9 +17,29 @@ function find(){
 }
 
 function findById(id){
-    return project("projects")
-    .where({ id })
-    .first()
+    const query = project("projects as p");
+
+    if (id) {
+        query.where("p.id", id).first();
+
+        const promises = [query, getProjectTasks(id)];
+
+        return Promise.all(promises).then(function(results) {
+            const [project, tasks] = results
+
+            if(project) {
+                project.tasks = tasks
+
+                return mapper.projectToBody(project)
+            } else{
+                return null
+            }
+        })
+    }else {
+        return query.then(projects => {
+            return projects.map(project => mapper.projectToBody)
+        })
+    }
 }
 
 function add(projects){
